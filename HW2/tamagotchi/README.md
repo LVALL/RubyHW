@@ -1,9 +1,9 @@
 # **Welcome to my "Tamagothi" game interpretation**
-this game is created for people who can't get themselves a pet 
+This game is created for people, who can't get themselves a pet 
 in the real world, but really want to take care of someone 
 (yeah, yeah, exactly, I'm talking about people like me).
 ## How to start game?
-all you need to do is run command in terminal such as:
+All you need to do is run command in terminal like this one:
 ```bash
 ruby /home/valera/Документы/GitHub/RubyHW/HW2/tamagotchi/game.rb
 ```
