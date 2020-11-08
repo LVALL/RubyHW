@@ -11,25 +11,31 @@ class Pet
   end
 
   def play
-    @fullness > 10 ? @fullness -= rand(5..10) : @fullness = 0
-    @activity > 10 ? @activity -= rand(5..10) : @activity = 0
+    puts "#{@name} scrath your sofa, meow, meow" if @kind == 'cat'
+    puts 'woof woof' if @kind == 'dog'
+    puts 'Funny!) that`s so funny'
     @happiness.between?(0, 90) ? @happiness += rand(5..10) : @happiness = 100
+    decrease_stat
   end
 
   def feed
+    puts 'OmNomNom, so tasty'
     @fullness.between?(0, 90) ? @fullness += rand(5..10) : @fullness = 100
-    @happiness.between?(0, 90) ? @happiness += rand(5..10) : @happiness = 100
+    increase_stat
   end
 
   def sleep
+    puts "SnoooZe 💤💤💤💤💤\n#{@name} wakes up and yawned"
     @fullness > 10 ? @fullness -= rand(5..10) : @fullness = 0
-    @activity.between?(0, 90) ? @activity += rand(5..10) : @activity = 100
-    @happiness.between?(0, 90) ? @happiness += rand(5..10) : @happiness = 100
+    increase_stat
+    time_passed
   end
 
   def heal
     @health = 100
     @happiness = 100
+    puts "#{@name} happy and healthy again, so you can play with it"
+    time_passed
   end
 
   def watch
@@ -37,6 +43,10 @@ class Pet
   end
 
   private
+
+  def hungry?
+    @fullness < 30
+  end
 
   def happy?
     @happiness > 60
@@ -47,17 +57,29 @@ class Pet
   end
 
   def angry?
-    @fullness < 20
+    @fullness < 30 && @happiness < 40
   end
 
   def wants_to_poop?
     @fullness == 100
   end
 
+  def decrease_stat
+    @fullness > 20 ? @fullness -= rand(10..20) : @fullness = 0
+    @activity > 20 ? @activity -= rand(10..20) : @activity = 0
+  end
+
+  def increase_stat
+    @activity.between?(0, 90) ? @activity += rand(5..10) : @activity = 100
+    @happiness.between?(0, 90) ? @happiness += rand(5..10) : @happiness = 100
+  end
+
   def time_passed
-    puts 'Some hours later...'
+    positive_emotions = ['Pet wants to kiss you, let it do', 'He is so happy', 'Starts dancing and funny jumped']
+    negative_emotions = ['Angry RoArrr!!!', 'Frrrmrrhrmr', 'Your pet bites you', '*Quiet howl*, that`s not good']
     puts 'Your pet poops on the floor' if wants_to_poop?
     puts 'Pet wants to sleep!' if wants_to_sleep?
-    puts 'Is not in a good mood' if @happiness < 30
+    puts positive_emotions.sample if happy?
+    puts negative_emotions.sample if angry?
   end
 end

@@ -9,7 +9,6 @@ class Game
     print 'Choose name for it: '
     @pet.name = gets.chomp.to_s
     puts "#{@pet.name.capitalize} likes this name! \nYour pet loves you 💚"
-    puts "\nYou can watch this hints again pressing `7`"
   end
 
   def start_game
@@ -17,6 +16,7 @@ class Game
     help
 
     while @health != 0
+      print "\nChoose command (to show info press `7`, than `Enter`): "
       decision = gets.chomp
       break if decision == '6'
 
@@ -41,7 +41,7 @@ class Game
         puts 'Wrong action'
       end
     end
-    if @health.zero?
+    if @health == 0
       puts "#{@pet.name.capitalize} was died 💔"
     else
       puts "#{@pet.name.capitalize} says bye-bye"
@@ -56,7 +56,7 @@ class Game
       4 - Visit a doctor 🚑
       5 - Show pet's stat
       6 - Exit game
-      Press Enter to do nothing"
+      Press `Enter` to do nothing"
   end
 
   def show_stat
