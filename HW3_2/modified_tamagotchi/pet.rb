@@ -90,10 +90,10 @@ class Pet
   end
 
   def html
-    content = "<p>Health:  #{@health}</p>
-    <p>Happiness: #{@happiness}</p>
-    <p>Fullness: #{@fullness}</p>
-    <p>Activity: #{@activity}</p>"
+    content = "<p>Health: #{@health}</p>
+      <p>Happiness: #{@happiness}</p>
+      <p>Fullness: #{@fullness}</p>
+      <p>Activity: #{@activity}</p>"
 
     MakeHtml.new.make_html(content, true)
   end
