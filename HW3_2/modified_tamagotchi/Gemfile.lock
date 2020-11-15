@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/LVALL/html_maker
-  revision: 26c33bae48106a8e496550c2e22fef29871e5480
+  revision: aef59de7dab0f52efb71b3ba0f957f951b038cc7
   specs:
-    html_maker (0.0.6)
+    html_maker (0.0.7)
 
 GEM
   remote: https://rubygems.org/
@@ -12,7 +12,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  html_maker!
+  html_maker (>= 0.0.7)!
 
 BUNDLED WITH
    2.1.4

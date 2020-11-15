@@ -89,12 +89,13 @@ class Pet
     puts negative_emotions.sample if angry?
   end
 
-  def html
+  def html(filename = 'index.html')
     content = "<p>Health: #{@health}</p>
       <p>Happiness: #{@happiness}</p>
       <p>Fullness: #{@fullness}</p>
-      <p>Activity: #{@activity}</p>"
+      <p>Activity: #{@activity}</p><br>"
 
-    MakeHtml.new.make_html(content, true)
+    MakeHtml.new.update_html(content, filename) if File.exist?(filename)
+    MakeHtml.new.make_html(content, true, filename) unless File.exist?(filename)
   end
 end

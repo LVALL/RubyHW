@@ -9,6 +9,7 @@ class Game
     print 'Choose name for it: '
     @pet.name = gets.chomp.to_s
     puts "#{@pet.name.capitalize} likes this name! \nYour pet loves you 💚"
+    @pet.create_html
   end
 
   def start_game
@@ -23,12 +24,16 @@ class Game
       case decision
       when '1'
         @pet.play
+        @pet.create_html
       when '2'
         @pet.feed
+        @pet.create_html
       when '3'
         @pet.sleep
+        @pet.create_html
       when '4'
         @pet.heal
+        @pet.create_html
       when '5'
         show_stat
         @pet.create_html
@@ -38,6 +43,7 @@ class Game
         help
       when ''
         @pet.watch
+        @pet.create_html
       else
         puts 'Wrong action'
       end
