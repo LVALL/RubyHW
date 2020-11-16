@@ -15,6 +15,7 @@ class Game
   def start_game
     create_pet
     help
+    @pet.open_tab
 
     while @health != 0
       print "\nChoose command (to show info press `7`, than `Enter`): "

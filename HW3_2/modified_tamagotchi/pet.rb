@@ -3,13 +3,14 @@ require 'html_maker'
 class Pet
   attr_accessor :kind, :name, :health, :happiness, :fullness, :activity
 
-  def initialize(health = 100, happiness = 100, fullness = 100, activity = 100, kind = 'cat', name = 'default')
+  def initialize(emoji = '💤',health = 100, happiness = 100, fullness = 100, activity = 100, kind = 'cat', name = 'default')
     @health = health
     @happiness = happiness
     @fullness = fullness
     @activity = activity
     @kind = kind
     @name = name
+    @emoji = emoji
   end
 
   def play
@@ -46,6 +47,10 @@ class Pet
 
   def create_html
     html
+  end
+
+  def open_tab
+    MakeHtml.new.open_in_browser
   end
 
   private
@@ -91,15 +96,17 @@ class Pet
 
   def html(filename = 'index.html')
     content = "
-      <div>
-          <p>Health: #{@health}</p>
-          <p>Happiness: #{@happiness}</p>
-          <p>Fullness: #{@fullness}</p>
-          <p>Activity: #{@activity}</p>
-        <br>
-      </div>"
+    <div style='margin-left: 5em; font-size: xx-large'>
+      <p>Health: #{@health}</p>
+      <p>Happiness: #{@happiness}</p>
+      <p>Fullness: #{@fullness}</p>
+      <p>Activity: #{@activity}</p>
+    </div>
 
-    MakeHtml.new.update_html(content, filename) if File.exist?(filename)
-    MakeHtml.new.make_html(content, true, filename) unless File.exist?(filename)
+    <div style='margin-left: 2em; font-size: 5em'>
+      <p>#{@emoji}</p>
+    </div>"
+
+    MakeHtml.new.make_html(content, true, filename)
   end
 end
