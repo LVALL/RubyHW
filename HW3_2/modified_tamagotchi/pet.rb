@@ -90,10 +90,14 @@ class Pet
   end
 
   def html(filename = 'index.html')
-    content = "<p>Health: #{@health}</p>
-      <p>Happiness: #{@happiness}</p>
-      <p>Fullness: #{@fullness}</p>
-      <p>Activity: #{@activity}</p><br>"
+    content = "
+      <div>
+          <p>Health: #{@health}</p>
+          <p>Happiness: #{@happiness}</p>
+          <p>Fullness: #{@fullness}</p>
+          <p>Activity: #{@activity}</p>
+        <br>
+      </div>"
 
     MakeHtml.new.update_html(content, filename) if File.exist?(filename)
     MakeHtml.new.make_html(content, true, filename) unless File.exist?(filename)
