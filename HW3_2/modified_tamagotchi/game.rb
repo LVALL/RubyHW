@@ -1,21 +1,20 @@
+require 'html_maker'
 require_relative 'pet'
 
 class Game
   def create_pet
     @pet = Pet.new
-    puts 'What animal you want to have ?)'
-    @pet.kind = gets.chomp.to_s
-    puts "Your #{@pet.kind} was born"
+    puts 'Your pet was born'
     print 'Choose name for it: '
     @pet.name = gets.chomp.to_s
-    puts "#{@pet.name.capitalize} likes this name! \nYour pet loves you 💚"
-    @pet.create_html
+    puts "#{@pet.name.capitalize} likes this name! 💚"
+    html
   end
 
   def start_game
     create_pet
     help
-    @pet.open_tab
+    MakeHtml.new.open_in_browser
 
     while @health != 0
       print "\nChoose command (to show info press `7`, than `Enter`): "
@@ -25,32 +24,31 @@ class Game
       case decision
       when '1'
         @pet.play
-        @pet.create_html
+        html
       when '2'
         @pet.feed
-        @pet.create_html
+        html
       when '3'
         @pet.sleep
-        @pet.create_html
+        html
       when '4'
         @pet.heal
-        @pet.create_html
+        html
       when '5'
-        show_stat
-        @pet.create_html
+        html
       when '6'
         break
       when '7'
         help
       when ''
         @pet.watch
-        @pet.create_html
+        html
       else
         puts 'Wrong action'
       end
     end
-    puts "#{@pet.name.capitalize} was died 💔" if @health == 0
-    puts "#{@pet.name.capitalize} says bye-bye" unless @health == 0
+    @pet.reaction = "#{@pet.name.capitalize} was died 💔" if @health == 0
+    @pet.reaction = "#{@pet.name.capitalize} says bye-bye" unless @health == 0
   end
 
   def help
@@ -64,12 +62,22 @@ class Game
       Press `Enter` to do nothing"
   end
 
-  def show_stat
-    puts "\nSomething you need to know about #{@pet.name.capitalize}:
-      health - #{@pet.health}
-      happiness - #{@pet.happiness}
-      fullness - #{@pet.fullness}
-      activity - #{@pet.activity}"
+  private
+
+  def html(filename = 'index.html')
+    content = "
+    <div style='margin-left: 5em; font-size: xx-large'>
+      <p>Health: #{@pet.health}</p>
+      <p>Happiness: #{@pet.happiness}</p>
+      <p>Fullness: #{@pet.fullness}</p>
+      <p>Activity: #{@pet.activity}</p>
+    </div>
+
+    <div style='margin-left: 2em; font-size: 5em'>
+      <p>#{@pet.name}</p>
+    </div>"
+
+    MakeHtml.new.make_html(content, true, filename)
   end
 end
 

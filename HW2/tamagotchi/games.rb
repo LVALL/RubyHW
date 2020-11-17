@@ -1,8 +1,8 @@
-require_relative 'pet'
+require_relative 'pets'
 
-class Game
+class Games
   def create_pet
-    @pet = Pet.new
+    @pet = Pets.new
     puts 'What animal you want to have ?)'
     @pet.kind = gets.chomp.to_s
     puts "Your #{@pet.kind} was born"
@@ -68,4 +68,4 @@ class Game
   end
 end
 
-Game.new.start_game
+Games.new.start_game

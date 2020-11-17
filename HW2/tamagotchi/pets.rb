@@ -1,4 +1,4 @@
-class Pet
+class Pets
   attr_accessor :kind, :name, :health, :happiness, :fullness, :activity
 
   def initialize(health = 100, happiness = 100, fullness = 100, activity = 100, kind = 'cat', name = 'default')
@@ -75,10 +75,10 @@ class Pet
   end
 
   def time_passed
-    positive_emotions = ['Pet wants to kiss you, let it do', 'He is so happy', 'Starts dancing and funny jumped']
+    positive_emotions = ['Pets wants to kiss you, let it do', 'He is so happy', 'Starts dancing and funny jumped']
     negative_emotions = ['Angry RoArrr!!!', 'Frrrmrrhrmr', 'Your pet bites you', '*Quiet howl*, that`s not good']
     puts 'Your pet poops on the floor' if wants_to_poop?
-    puts 'Pet wants to sleep!' if wants_to_sleep?
+    puts 'Pets wants to sleep!' if wants_to_sleep?
     puts positive_emotions.sample if happy?
     puts negative_emotions.sample if angry?
   end
