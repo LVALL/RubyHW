@@ -1,5 +1,5 @@
-require 'html_maker'
 require_relative 'pet'
+require 'html_maker'
 
 class Game
   def create_pet
@@ -16,8 +16,8 @@ class Game
     help
     MakeHtml.new.open_in_browser
 
-    while @health != 0
-      print "\nChoose command (to show info press `7`, than `Enter`): "
+    while @pet.health != 0
+      print "\nChoose command (to show info press `5`, than `Enter`): "
       decision = gets.chomp
       break if decision == '6'
 
@@ -35,10 +35,6 @@ class Game
         @pet.heal
         html
       when '5'
-        html
-      when '6'
-        break
-      when '7'
         help
       when ''
         @pet.watch
@@ -47,8 +43,6 @@ class Game
         puts 'Wrong action'
       end
     end
-    @pet.reaction = "#{@pet.name.capitalize} was died 💔" if @health == 0
-    @pet.reaction = "#{@pet.name.capitalize} says bye-bye" unless @health == 0
   end
 
   def help
@@ -57,7 +51,6 @@ class Game
       2 - Feed 🍪
       3 - Take it sleep 💤
       4 - Visit a doctor 🚑
-      5 - Show pet's stat
       6 - Exit game
       Press `Enter` to do nothing"
   end
@@ -73,8 +66,12 @@ class Game
       <p>Activity: #{@pet.activity}</p>
     </div>
 
+    <div style='margin-left: 3em; font-size: 3.2em'>
+      <p>#{@pet.reaction}</p>
+    </div>
+
     <div style='margin-left: 2em; font-size: 5em'>
-      <p>#{@pet.name}</p>
+      <p>#{@pet.smile}</p>
     </div>"
 
     MakeHtml.new.make_html(content, true, filename)

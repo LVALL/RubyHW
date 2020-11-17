@@ -5,11 +5,12 @@ in the real world, but really want to take care of someone
 ## How to start game?
 All you need to do is run command in terminal like this one:
 ```bash
-ruby /home/valera/Документы/GitHub/RubyHW/HW2/tamagotchi/game.rb
+ruby /home/valera/Документы/GitHub/RubyHW/HW3_2/modified_tamagotchi/game.rb
 ```
+The game window will open in your browser, as soon as you create your pet in terminal.
 ## Rules
 Yes, I almost forgot to write the list of rules, because I seem it so boring
 * MAIN rule is don't let your pet die, how will you do it - not my problem )
-
+* Use terminal hints and commands to do something with your pet
 ## How it looks
-![alt text](https://i.ibb.co/NpYs5dn/2020-11-08-17-05-44.png)
+![alt text](https://i.ibb.co/1rpTSSp/2020-11-17-14-36-59.png)
